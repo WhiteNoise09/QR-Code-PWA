@@ -1,0 +1,18 @@
+{
+	"name": "QR Code Scanner",
+	"short_name": "QR Code",
+	"description":"Une petite webapp pour scanner des QR codes, parce que je n'ai pas de scanner de QR codes sur ma tablette, et que fait par soi-même c'est mieux ^^",
+	"lang": "fr",
+	"display": "fullscreen",
+	"orientation": "portrait",
+	"background_color":"#222",
+	"theme_color": "#222",
+	"icons": [
+		{
+			"src": "./assets/logoV3_900.png",
+			"sizes": "900x900",
+			"type": "image/png"
+		}
+	],
+	"start_url": "./index.html"
+}
