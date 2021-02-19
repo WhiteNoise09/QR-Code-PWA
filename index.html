@@ -4,11 +4,32 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="user-scalable=no">
 		<link rel="manifest" href="manifest.webmanifest">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/general.css">
+		<link rel="stylesheet" href="css/ui.css">
+		<link rel="stylesheet" href="css/popup.css">
 		<script src="src/videoStream.js"></script>
 		<title>QR Code Scanner</title>
 	</head>
 	<body>
+		<div class="popup-container hidden">
+			<div class="popup" id="message">
+				<h1>QR code détecté !</h1>
+				<code><p>https://eqrcode/a/JdiqhdLk</p></code>
+				<div id="buttons">
+					<button id="copy">Copy</button>
+					<button id="open">Open</button>
+				</div>
+			</div>
+		</div>
+		<div class="popup-container hidden">
+			<div class="popup" id="error">
+				<h1>Une erreur s'est produite !</h1>
+				<code><p>https://eqrcode/a/JdiqhdLk<br><br><br>a</p></code>
+			</div>
+		</div>
+		<div id="cover" class="hidden">
+			
+		</div>
 		<video id="cam-stream"></video>
 		<div id="button-bar">
 			<div id="scan-button">

@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	let barcodeDetector = null;
 
 	if(!('BarcodeDetector' in window)) {
-		alert('BarcodeDetector api is not supported on this browser.')
+		displayError('BarcodeDetector api is not supported on this browser.');
 	} else {
 		barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
 	}
@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		    media = await navigator.mediaDevices.getUserMedia({audio: false, video: { facingMode: 'environment' } });
 		}
 		catch(e) {
-			document.querySelector('body').textContent = e;
+			displayError(e);
 		}
 	
 		videoElement.srcObject = media;
@@ -23,10 +23,79 @@ window.addEventListener('DOMContentLoaded', () => {
 	
 		document.querySelector('#scan-button').addEventListener('click', () => {
 			barcodeDetector.detect(videoElement).then(datas => {
-				window.location = datas[0].rawValue;
-			}).catch(alert);
+				 const url = datas[0].rawValue;
+				 displayPopup(url);
+			}).catch(displayError);
 		})
+
+		displayPopup('#');
 	})();
+
+
+	function displayError(message) {
+		const errorPopup = document.querySelector('.popup#error');
+		const cover = document.querySelector('#cover');
+
+		errorPopup.querySelector('code p').textContent = message;
+		errorPopup.parentNode.classList.remove('hidden');
+		cover.classList.remove('hidden');
+
+		let clickedPopup = false;
+
+		errorPopup.addEventListener('click', () => {
+			clickedPopup = true;
+		});
+
+		errorPopup.parentNode.addEventListener('click', () => {
+			if(clickedPopup) clickedPopup = false;
+			else dismissError();
+		});
+	}
+
+	function displayPopup(url) {
+		const popup = document.querySelector('.popup#message');
+		const cover = document.querySelector('#cover');
+
+		popup.querySelector('code p').textContent = url;
+		popup.parentNode.classList.remove('hidden');
+		cover.classList.remove('hidden');
+
+		const copyButton = popup.querySelector('#copy');
+		const openButton = popup.querySelector('#open');
+
+		openButton.addEventListener('click', () => {
+			window.location = url;
+		});
+
+		copyButton.addEventListener('click', () => {
+			navigator.clipboard.writeText(url);
+		});
+
+		let clickedPopup = false;
+
+		popup.addEventListener('click', () => {
+			clickedPopup = true;
+		});
+
+		popup.parentNode.addEventListener('click', () => {
+			if(clickedPopup) clickedPopup = false;
+			else dismissPopup();
+		});
+	}
+
+	function dismissError() {
+		const errorPopup = document.querySelector('.popup#error');
+		const cover = document.querySelector('#cover');
+		errorPopup.parentNode.classList.add('hidden');
+		cover.classList.add('hidden');
+	}
+
+	function dismissPopup() {
+		const popup = document.querySelector('.popup#message');
+		const cover = document.querySelector('#cover');
+		popup.classList.add('hidden');
+		cover.classList.add('hidden');
+	}
 });
 
 /*
