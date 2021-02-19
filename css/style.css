@@ -29,11 +29,22 @@
 	background-color: rgb(220, 220, 220);
 }
 video {
-	width: 100vw;
 	background-color: black;
 }
 
 body {
 	overflow: hidden;
 	margin: 0;
+}
+
+@media (orientation: landscape) {
+  video {
+    width: 100vw;
+  }
+}
+
+@media (orientation: portrait) {
+  video {
+    height: 100vh;
+  }
 }
