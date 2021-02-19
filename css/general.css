@@ -1,0 +1,39 @@
+video {
+	background-color: black;
+}
+
+body {
+	overflow: hidden;
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif
+}
+
+@media (orientation: landscape) {
+  video {
+    width: 100vw;
+  }
+}
+
+@media (orientation: portrait) {
+  video {
+    height: 100vh;
+  }
+}
+
+/*#message {
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 80vw;
+	height: 30vh;
+	background-color: white;
+	border-radius: 80px;
+	box-shadow: 2vw 2vw #550099;
+	display: flex;
+	flex-direction: column;
+	display: none;
+}
+*/
