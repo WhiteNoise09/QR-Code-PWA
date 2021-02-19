@@ -1,10 +1,11 @@
 window.addEventListener('DOMContentLoaded', () => {
 	const videoElement = document.querySelector('#cam-stream');
+	let barcodeDetector = null;
 
 	if(!('BarcodeDetector' in window)) {
 		alert('BarcodeDetector api is not supported on this browser.')
 	} else {
-		var barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
+		barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
 		log('initalised barcode');
 	}
 	
