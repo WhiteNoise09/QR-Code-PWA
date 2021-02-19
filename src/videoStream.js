@@ -26,9 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				 const url = datas[0].rawValue;
 				 displayPopup(url);
 			}).catch(displayError);
-		})
-
-		displayPopup('#');
+		});
 	})();
 
 
@@ -93,7 +91,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	function dismissPopup() {
 		const popup = document.querySelector('.popup#message');
 		const cover = document.querySelector('#cover');
-		popup.classList.add('hidden');
+		popup.parentNode.classList.add('hidden');
 		cover.classList.add('hidden');
 	}
 });
