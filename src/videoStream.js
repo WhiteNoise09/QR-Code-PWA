@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		videoElement.play();
 	
 		document.querySelector('#scan-button').addEventListener('click', () => {
-			BarcodeDetector.detect(videoElement).then(datas => {
+			barcodeDetector.detect(videoElement).then(datas => {
 				window.location = datas.rawValue;
 			});
 		})

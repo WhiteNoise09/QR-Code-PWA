@@ -29,6 +29,10 @@
 	background-color: rgb(220, 220, 220);
 }
 
+video {
+	background-color: black;
+}
+
 body {
 	margin: 0;
 }
