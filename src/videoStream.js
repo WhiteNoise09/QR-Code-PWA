@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	let barcodeDetector = null;
 
 	if(!('BarcodeDetector' in window)) {
-		return alert('BarcodeDetector api is not supported on this browser.')
+		alert('BarcodeDetector api is not supported on this browser.')
 	} else {
 		barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
 	}
