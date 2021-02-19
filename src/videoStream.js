@@ -21,9 +21,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		videoElement.play();
 	
 		document.querySelector('#scan-button').addEventListener('click', () => {
+			alert('hey');
 			barcodeDetector.detect(videoElement).then(datas => {
-				window.location = datas.rawValue;
-			});
+				alert(datas.rawValue);
+			}).catch(alert);
 		})
 	})();
 });
