@@ -3,10 +3,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	let barcodeDetector = null;
 
 	if(!('BarcodeDetector' in window)) {
-		alert('BarcodeDetector api is not supported on this browser.')
+		return alert('BarcodeDetector api is not supported on this browser.')
 	} else {
 		barcodeDetector = new BarcodeDetector({ formats: ['qr_code'] });
-		log('initalised barcode');
 	}
 	
 	(async function() {
@@ -23,16 +22,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		videoElement.play();
 	
 		document.querySelector('#scan-button').addEventListener('click', () => {
-			log('click !')
 			barcodeDetector.detect(videoElement).then(datas => {
-				log(datas[0].rawValue);
-			}).catch(() => log('hey 3 !'));
+				window.location = datas[0].rawValue;
+			}).catch(alert);
 		})
 	})();
-
-	function log(message) {
-		document.querySelector('#log').textContent = message;
-	}
 });
 
 /*
