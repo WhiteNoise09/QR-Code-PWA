@@ -1,4 +1,4 @@
-const videoElement = document.querySelector('video');
+const videoElement = document.querySelector('#cam-stream');
 
 if(!('BarcodeDetector' in window)) {
 	alert('BarcodeDetector api is not supported on this browser.')
